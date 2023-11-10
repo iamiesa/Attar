@@ -1,7 +1,4 @@
-{{-- @extends('main') --}}
 
-
-{{-- @section('about') --}}
 
     <!-- about us -->
     <section id = "about" class = "py-5">
@@ -11,16 +8,17 @@
                     <div class = "title pt-3 pb-5">
                         <h2 class = "position-relative d-inline-block ms-4">About Us</h2>
                     </div>
-                    <p class = "lead text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ipsam.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem fuga blanditiis, modi exercitationem quae quam eveniet! Minus labore voluptatibus corporis recusandae accusantium velit, nemo, nobis, nulla ullam pariatur totam quos.</p>
-                </div>
+                    <p class = "lead text-muted">Since 1990. We are selling Best Attar  </p>
+                    <p> We are providing best budget friendly products to our Beloved customers.
+                         All of our sellers are trusted and honest. People are  satisfied  after purchase products from our site.
+                        Let us know your thoughts about us.
+                    </p>
+                          </div>
                 <div class = "col-lg-6 order-lg-0">
-                    <img src = "images/about_us.jpg" alt = "" class = "img-fluid">
+                    <img src = "{{ asset('upload/Attar5.jfif')}}" alt = "" class = "img-fluid">
                 </div>
             </div>
         </div>
     </section>
     <!-- end of about us -->
 
-
-{{-- @endsection --}}

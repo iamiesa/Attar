@@ -3,12 +3,14 @@
 
 
     <!-- footer -->
-    <footer class = "bg-dark py-5">
+    <footer class = "bg-dark py-5 footer" >
         <div class = "container">
             <div class = "row text-white g-4">
                 <div class = "col-md-6 col-lg-3">
                     <a class = "text-uppercase text-decoration-none brand text-white" href = "index.html">Attire</a>
-                    <p class = "text-white text-muted mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum mollitia quisquam veniam odit cupiditate, ullam aut voluptas velit dolor ipsam?</p>
+                    <p class = "text-white text-muted mt-3">We are providing best budget friendly products to our Beloved customers.
+                        All of our sellers are trusted and honest. People are  satisfied  after purchase products from our site.
+                       Let us know your thoughts about us.</p>
                 </div>
 
                 <div class = "col-md-6 col-lg-3">
@@ -23,12 +25,7 @@
                             <a href = "#" class = "text-white text-decoration-none text-muted">
                                 <i class = "fas fa-chevron-right me-1"></i> Collection
                             </a>
-                        </li>
-                        <li class = "my-3">
-                            <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Blogs
-                            </a>
-                        </li>
+                        </li>                      
                         <li class = "my-3">
                             <a href = "#" class = "text-white text-decoration-none text-muted">
                                 <i class = "fas fa-chevron-right me-1"></i> About Us
@@ -44,7 +41,7 @@
                             <i class = "fas fa-map-marked-alt"></i>
                         </span>
                         <span class = "fw-light">
-                            Albert Street, New York, AS 756, United States of America
+                             Food Street, Near Chaar Minar, Hydrabad -47
                         </span>
                     </div>
                     <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
@@ -52,7 +49,7 @@
                             <i class = "fas fa-envelope"></i>
                         </span>
                         <span class = "fw-light">
-                            attire.support@gmail.com
+                            attar.support@gmail.com
                         </span>
                     </div>
                     <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
@@ -103,9 +100,9 @@
         <!-- isotope js -->
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
         <!-- bootstrap js -->
-        <script src = "bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+        <script src = "{{ asset('bootstrap-5.0.2-dist/js/bootstrap.min.js') }}"></script>
         <!-- custom js -->
-        <script src = "js/js/script.js"></script>
+        <script src = "{{ asset('js/js/script.js') }}"></script>
     </body>
     </html>
 

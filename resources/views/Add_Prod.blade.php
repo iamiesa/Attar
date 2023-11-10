@@ -1,7 +1,7 @@
 @include('header')
+
+
 <div class="admin">
-
-
 <div id="admin-content">
     <div class="container">
         <div class="row">

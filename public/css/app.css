@@ -34,6 +34,7 @@ body{
 
 /* navbar */
 .navbar{
+  
     -webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
             box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
 }
@@ -53,7 +54,7 @@ body{
 
 /* header */
 #header{
-    background: url(../images/banner-img-1.jpg) top/cover no-repeat;
+    background: url(../images/Attar1.jfif) top/cover no-repeat;
 }
 .carousel-inner h1{
     font-size: 60px;
@@ -118,7 +119,7 @@ body{
 
 /* offers */
 #offers{
-    background: url(../images/offer_img.jpg) center/cover no-repeat;
+    background: url(../images/Attar6.jfif) center/cover no-repeat;
 }
 #offers .row{
     min-height: 60vh;
@@ -165,6 +166,7 @@ body{
 
 /* footer */
 footer .brand{
+   
     font-family: var(--lg-font);
     letter-spacing: 2px;
 }
@@ -190,4 +192,29 @@ justify-content: center;
     align-items: center;
     margin-top:140px ;
     padding-bottom: 50px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:140px ;
+    padding-bottom: 50px;
+    max-width: 500px;
+    margin-left: 10%;
+}
+.oderform{
+    padding-left: 10%;
+
+}
+
+.summ_img{
+    height: 100px;
+    width: 100px;
+}
+
+.cartlist_div{
+
+    margin-top:140px ;
+    
 }

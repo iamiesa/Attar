@@ -1,63 +1,71 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/signup.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h2>SIGNUP FORM</h2>
-      <div class="form">
-        <form action="{{ URL('/') }}/signup" method="post">
-          @csrf
-            <label for="username" >Username :</label>
-            <input type="text" id="username" name="name" required><br><br>
-            <label for="contacno">Contact-no :</label>
-            <input type="text" id="contactno" name="contact" required><br><br>
-            <label for="email">Email-id :</label>
-            <input type="text" id="email" name="email" required><br><br>
-            <label for="password">Password :</label>
-            <input type="text" id="password" name="password" required><br><br>
-           
-            <input type="submit" name="submit">
-        </form>
-      </div>
-    </div>
-  </body>
-</html> --}}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Form</title>
-    <link rel="stylesheet" href="{{ asset('css/signup.css') }}"> <!-- Use Laravel's asset() helper to generate asset URLs -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h2>SIGNUP FORM</h2>
-        <div class="form">
-            <form action="{{ URL('/') }}/signup" method="POST"> <!-- Use named routes for form action -->
-                @csrf <!-- CSRF token for security -->
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="name" required><br><br>
-                
-                <label for="contactno">Contact-no:</label>
-                <input type="text" id="contactno" name="contact" required><br><br>
-                
-                <label for="email">Email-id:</label>
-                <input type="email" id="email" name="email" required><br><br> <!-- Use type="email" for email input -->
-                
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br><br> <!-- Use type="password" for password input -->
-                
-                <input type="submit" value="Submit"> <!-- Use value attribute for the submit button text -->
-            </form>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">SIGNUP FORM</h2>
+                <form action="{{ URL('/') }}/signup" method="POST" class="needs-validation" novalidate>
+                    @csrf 
+
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactno">Contact-no:</label>
+                        <input type="text" id="contactno" name="contact" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email-id:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Include Bootstrap validation script -->
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 </html>
