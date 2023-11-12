@@ -13,7 +13,7 @@
         
         <div class = "collection-list mt-4 row gx-0 gy-3">
             
-            @foreach($prod as $item)
+            @foreach($special as $item)
 
                 <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
                     <a href="prod_detail/{{$item['prod_id']}}">

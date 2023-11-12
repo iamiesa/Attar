@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('contact',20);
             $table->string('email',50)->unique();
             $table->string('password');
-            $table->int('admin')->default('0');
+            $table->integer('admin')->default('0');
             $table->timestamps();
         });
        

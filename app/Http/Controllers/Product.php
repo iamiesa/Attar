@@ -42,7 +42,12 @@ class Product extends Controller
         $obj->name = $req['name'];
         $obj->price = $req['price'];
         $obj->description = $req['description'];
-        $obj->category = $req['category'];
+        if($req['price'] > 1499){
+        $obj->category = 'Special';
+        }
+        else{
+            $obj->category = $req['category'];
+        }
         $obj->image = $file_name;
 
         $obj->save();
@@ -60,8 +65,9 @@ class Product extends Controller
      //  Special Products Url
     public function special_prod()
     {
-        $data = Add_Prod::all();
-        return view('special_Prod', ['prod' => $data]);
+        $special = 'Special';
+        $data = Add_Prod::where('category',$special)->get();
+        return view('special_Prod', ['special' => $data]);
     }
 
       // Search Page
@@ -75,7 +81,7 @@ class Product extends Controller
         return view('search',$arr);
 
     }
-    
+
 
     //  Passing Data to views
     public function getAllData()
@@ -173,7 +179,7 @@ class Product extends Controller
         $uid = session()->get('user')['user_id'];
         $all_prod = Cart::where('user_id', $uid)->get();
 
-        foreach ($all_prod as $prod) {
+        foreach ($all_prod as $prod) {     
             $order = new Orders();
             $order->user_id = $uid;
             $order->prod_id = $prod->prod_id;

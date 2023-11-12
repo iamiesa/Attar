@@ -28,9 +28,9 @@
                         <label for="exampleInputPassword1">Category</label>
                         <select name="category" class="form-control">
                             <option > Select Category</option>
-                            <option value="cloth" >Clothes</option>
-                            <option value="electronis" >Electronics</option>
-                            <option value="grocery" >Grocery</option>
+                            <option value="Collection" >Collection</option>
+                            <option value="Specials" >Specials</option>
+                            <option value="New Arrival" >New Arrival</option>
                             
                         </select>
                     </div>
