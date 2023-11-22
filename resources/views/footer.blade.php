@@ -7,7 +7,7 @@
         <div class = "container">
             <div class = "row text-white g-4">
                 <div class = "col-md-6 col-lg-3">
-                    <a class = "text-uppercase text-decoration-none brand text-white" href = "index.html">Attire</a>
+                    <a class = "text-uppercase text-decoration-none brand text-white" href = "index.html">Attar</a>
                     <p class = "text-white text-muted mt-3">We are providing best budget friendly products to our Beloved customers.
                         All of our sellers are trusted and honest. People are  satisfied  after purchase products from our site.
                        Let us know your thoughts about us.</p>
