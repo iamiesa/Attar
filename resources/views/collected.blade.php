@@ -22,6 +22,8 @@
               
                 @foreach($prod as $item)
 
+                
+
                     <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
                         <a href="prod_detail/{{$item['prod_id']}}">
                         <div class = "collection-img position-relative">
@@ -46,9 +48,12 @@
                             </div>
                         </div>
                     </div>
-                 @endforeach
-        
+                    @endforeach
+                    <div class="d-flex justify-content-center mt-4">
+                        {{$prod->links()}}
+                    </div>
                 </div>
+    
             </div>
         </div>
     </section>

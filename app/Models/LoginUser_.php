@@ -13,7 +13,7 @@ class LoginUser_ extends Model
     use HasFactory;
 
     protected $table = 'loginusers_';
-    protected $primarykey = 'user_id';
+    protected $primaryKey = 'user_id';
 
 
     

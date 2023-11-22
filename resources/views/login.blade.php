@@ -32,6 +32,9 @@
                 <div class="text-center mt-3">
                     <button class="btn btn-link"><a href="{{ URL('/') }}/signup">SIGN-UP</a></button>
                 </div>
+                <div class="text-center mt-4">
+                    <a href="{{ URL('forget_pass') }}">Forget Password</a>
+                </div>
             </div>
         </div>
     </div>

@@ -28,7 +28,8 @@ if (session()->has('user')){
 
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+   
     
     <!-- navbar -->
     <nav class = "navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
@@ -73,8 +74,12 @@ if (session()->has('user')){
                     <li><a class="dropdown-item" href="{{url('orders')}}">Orders</a></li>
                     <li><a class="dropdown-item" href="{{url('order_summary')}}">Ordered</a></li>
 
-                    <li><a class="dropdown-item" href="{{url('add-prod')}}">Sell</a></li>
-
+                
+                        @if (session()->has('user') && session('admin')==1)
+        
+                        <li><a class="dropdown-item" href="{{url('add-prod')}}">Sell</a></li>
+                        @endif
+                    
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout">Logout</a></li>
                     </ul>
@@ -111,6 +116,5 @@ if (session()->has('user')){
     <!-- end of navbar -->
 
    
-
 
     {{-- @endsection --}}

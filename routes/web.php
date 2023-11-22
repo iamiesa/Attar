@@ -19,16 +19,22 @@ use App\Http\Controllers\Product;
 */
 
 //  Home Route
+
+// Route::get('/',function(){
+//     return view('index');
+// });
+
+// Route::view('/','index');
 Route::get('/',[Product::class,'getAllData'])->name('getAllData');
 
 //  Just Testing Routes
-// Route::view('/header','header');
-// Route::view('/footer','footer');
+Route::view('/header','header');
+Route::view('/footer','footer');
 // Route::view('/main','main');
 // Route::view('/login','login');
 
 // Collection Page
-Route::get('/collection',[Product::class,'showProd'])->name('showProd');
+Route::get('/collected',[Product::class,'showProd'])->name('showProd');
 
 //  Special Product Page
 Route::get('/special_prod',[Product::class,'special_prod'])->name('special_prod');
@@ -48,6 +54,13 @@ Route::get('/logout',function(){
     session()->forget(['user','name','id']);
     return redirect('/');
 });  
+
+// forget-pass
+Route::get('/forget_pass',[Controller::class,'forget_pass'])->name('forget_pass');
+Route::post('/forget_pass',[Controller::class,'forget_pass_verify_user'])->name('forget_pass_verify_user');
+Route::post('/update_user_password/{user_id}',[Controller::class,'update_user_password'])->name('update_user_password');
+
+
 
 
 // Adding Products

@@ -54,9 +54,44 @@ class Controller extends BaseController
       $req->session()->put('user',$user);
       $req->session()->put('name',$user->name);
       $req->session()->put('id',$user->user_id);
+      $req->session()->put('admin',$user->admin);
+
 
         return redirect('/');
        }
     }
 
+    public function forget_pass(){
+        return view('forget_pass');
+
+    }
+    
+    public function forget_pass_verify_user(Request $req){
+        $email = LoginUser_::where(['email'=>$req->email])->orWhere(['name'=>$req->name])->first();
+
+        $data = compact('email');
+        
+        if (!empty($data)){
+            return view('forget_pass_update_data',['data'=>$data]);
+        }
+        else{
+           return "Email / User Name Not Found ";
+          
+        }
+
+    }
+
+   public function update_user_password($user_id,Request $req){
+
+        $user = LoginUser_::where(['user_id'=>$user_id])->first();
+        $user->name = $req->name;
+        $user->contact =  $req->contact;
+        $user->email =  $req->email;
+        $user->password = Hash::make( $req->password);
+        $user->save();
+
+        return redirect('/');
+
+
+   }
 }

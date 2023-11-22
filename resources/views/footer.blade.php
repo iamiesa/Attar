@@ -1,9 +1,9 @@
 {{-- @extends('main') --}}
 {{-- @section('footer_section')   --}}
 
-
+@include('header')
     <!-- footer -->
-    <footer class = "bg-dark py-5 footer" >
+    <footer class = "bg-dark py-5 footer ">
         <div class = "container">
             <div class = "row text-white g-4">
                 <div class = "col-md-6 col-lg-3">

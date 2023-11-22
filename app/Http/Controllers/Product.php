@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Add_Prod;
 use App\Models\Cart;
 use App\Models\Orders;
+use App\Models\LoginUser_;
+use Illuminate\Pagination\Paginator;
+
+
+
+// use Illuminate\Pagination\LengthAwarePaginator;
+
 
 class Product extends Controller
 {
@@ -14,7 +21,7 @@ class Product extends Controller
     //  For Adding or selling Products
     public function ProdView()
     {   
-        if(session()->has('user')){
+        if(session()->has('user') && session('admin')==1){
             return view('Add_Prod');
         }
         else{
@@ -41,6 +48,7 @@ class Product extends Controller
         $obj = new Add_Prod();
         $obj->name = $req['name'];
         $obj->price = $req['price'];
+        $obj->user_id = session()->get('user')['user_id'];;
         $obj->description = $req['description'];
         if($req['price'] > 1499){
         $obj->category = 'Special';
@@ -58,11 +66,11 @@ class Product extends Controller
     //  Showing Products
     public function showProd()
     {
-        $data = Add_Prod::all();
-        return view('collection', ['prod' => $data]);
+        $data = Add_Prod::paginate(8);
+        return view('collected', ['prod' => $data]);
     }
     
-     //  Special Products Url
+//  Special Products Url
     public function special_prod()
     {
         $special = 'Special';
@@ -86,7 +94,7 @@ class Product extends Controller
     //  Passing Data to views
     public function getAllData()
     {
-        $data = Add_Prod::all();
+        $data = Add_Prod::paginate(4);
         return view('index', ['prod' => $data]);
     }
 
@@ -151,19 +159,23 @@ class Product extends Controller
     public function orders()
     {
         if (session()->has('user')) {
+            
             $uid = session()->get('user')['user_id'];
+
             $total = DB::table('carts')
                 ->join('add__prods', 'carts.prod_id', "add__prods.prod_id")
                 ->where('carts.user_id', $uid)
                 ->sum('add__prods.price') ;
+
             $data = DB::table('carts')
                 ->join('add__prods', 'carts.prod_id', "add__prods.prod_id")
                 ->where('carts.user_id', $uid)
                 ->get() ;
-
-            $Arr = [    'total' => $total,
-                        'data' => $data
-                    ];
+            
+            $Arr = [    
+                'total' => $total,
+                'data' => $data
+            ];
 
             return view('orders', $Arr);
         } else {
