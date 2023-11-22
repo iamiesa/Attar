@@ -2,7 +2,7 @@
 
 
 
-<div class="center">
+<div class="center mt-10">
     <table class="table">
        @foreach($data as $item)
         <tbody>

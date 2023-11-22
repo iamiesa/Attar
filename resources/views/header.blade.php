@@ -78,6 +78,9 @@ if (session()->has('user')){
                         @if (session()->has('user') && session('admin')==1)
         
                         <li><a class="dropdown-item" href="{{url('add-prod')}}">Sell</a></li>
+                        <li><a class="dropdown-item" href="{{url('admin')}}">Users And Products</a></li>
+
+
                         @endif
                     
                     <li><hr class="dropdown-divider"></li>

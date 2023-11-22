@@ -187,7 +187,7 @@ class Product extends Controller
     
 //  Payment
     public function Order_pay(Request $req)
-    {
+    {  if (session()->has('user')) {
         $uid = session()->get('user')['user_id'];
         $all_prod = Cart::where('user_id', $uid)->get();
 
@@ -204,20 +204,44 @@ class Product extends Controller
         }
         return redirect('/');
     }
+    else {
+        echo "<script> alert('Please Login and Add products to cart') </script>";
+    }
+    }
 
 
     // Ordered details
     public function order_summary()
     {
+        if (session()->has('user')) {
         $uid = session()->get('user')['user_id'];
         $data = DB::table('orders')
             ->join('add__prods', 'orders.prod_id', 'add__prods.prod_id')
             ->where('orders.user_id', $uid)
             ->get();
-
-        return view('order_summary', ['data' => $data]);
+            return view('order_summary', ['data' => $data]);
+        }
+            else {
+                echo "<script> alert('Please Login and Add products to cart') </script>";
+            }
     }
 
 
   
+    public function admin(){
+        if(  session('admin') == 1){
+        $users = LoginUser_::paginate(10);
+        $products = Add_Prod::paginate(10);
+        $orders = Orders::paginate(10);
+
+        $data = [
+            'users'  => $users,
+            'products' => $products,
+            'orders' => $orders
+
+        ];
+
+        return view('admin',$data);
+    }
+}
 }

@@ -27,6 +27,8 @@ use App\Http\Controllers\Product;
 // Route::view('/','index');
 Route::get('/',[Product::class,'getAllData'])->name('getAllData');
 
+Route::get('/admin',[Product::class,'admin'])->name('admin');
+
 //  Just Testing Routes
 Route::view('/header','header');
 Route::view('/footer','footer');
