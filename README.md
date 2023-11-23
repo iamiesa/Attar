@@ -1,3 +1,29 @@
+In this Project i have build an Ecommerce Website that sells Perfumes and other products will added soon ..
+
+In this peoject i have used Laravel 90% and Bootstrap 5% and JavaScript 5%...
+
+I have built this with muliple user functionality .. where multiple users can signup and purchase the products .
+
+Here the Payment Gateway  is not added for now so if user hit buy button the mail will  sends to the admin of the website so that he confirms and send products to the users ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
