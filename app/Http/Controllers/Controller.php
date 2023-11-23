@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request; // Use the appropriate Request class
-// use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request; 
 use App\Models\LoginUser_;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Hash; // Use Laravel's built-in Hash for password hashing
+use Illuminate\Support\Facades\Hash; 
+//  For Mail 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AttarEcom;
 
-use function Laravel\Prompts\alert;
+
 
 class Controller extends BaseController
 {
@@ -61,6 +63,8 @@ class Controller extends BaseController
        }
     }
 
+
+    //  ============== Forget Passwords =================
     public function forget_pass(){
         return view('forget_pass');
 
@@ -91,7 +95,19 @@ class Controller extends BaseController
         $user->save();
 
         return redirect('/');
-
-
    }
+
+
+//  ============ Testing Email ================
+   public function SendMail(){
+    $mailData =  [
+        'title'=> 'Mail From Attar Ecom ',
+        'body' => ' Testing the Mail'
+    ];
+
+    Mail::to('afnanbhate7@gmail.com')->send(new AttarEcom($mailData));
+   
+    dd('Email Send Successfully..');
+}
+
 }

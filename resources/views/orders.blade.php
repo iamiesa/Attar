@@ -139,21 +139,22 @@
 
                     <div class="form-check">
                         <p>Payment Method:</p>
+                        <p> The Upi and Card Payment Is not available for Now, Please Select Cash On Delivery</p>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="payment" value="UPI">
+                            <input type="radio" class="form-check-input" name="payment" value="UPI" required>
                             <label class="form-check-label">UPI</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="payment" value="Cash on deliver">
+                            <input type="radio" class="form-check-input" name="payment" value="Cash on deliver" required>
                             <label class="form-check-label">Cash On Delivery</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="payment" value="Card">
+                            <input type="radio" class="form-check-input" name="payment" value="Card" required>
                             <label class="form-check-label">Card</label>
                         </div>
                     </div>
 
-                    <textarea name="address" class="form-control mt-3" placeholder="Address" rows="2"></textarea>
+                    <textarea name="address" class="form-control mt-3" placeholder="Address" rows="2" required></textarea>
                     <br>
                     <input type="submit" class="btn btn-success submit" name="Pay" value="Pay">
                 </form>

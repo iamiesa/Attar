@@ -8,8 +8,9 @@ use App\Models\Add_Prod;
 use App\Models\Cart;
 use App\Models\Orders;
 use App\Models\LoginUser_;
-use Illuminate\Pagination\Paginator;
-
+//  Mail 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AttarEcom;
 
 
 // use Illuminate\Pagination\LengthAwarePaginator;
@@ -29,7 +30,9 @@ class Product extends Controller
         }
     }
 
-    //  Storing Data to database
+
+
+//  ============ Storing Data to database ==================
     public function AddProd(Request $req)
     {
         if ($req->hasFile('image')) {
@@ -63,14 +66,18 @@ class Product extends Controller
         return redirect()->route('ProdView');
     }
 
-    //  Showing Products
+
+
+    // =========== Showing Products ============
     public function showProd()
     {
         $data = Add_Prod::paginate(8);
         return view('collected', ['prod' => $data]);
     }
     
-//  Special Products Url
+
+
+// ================= Special Products Url ===================
     public function special_prod()
     {
         $special = 'Special';
@@ -78,7 +85,8 @@ class Product extends Controller
         return view('special_Prod', ['special' => $data]);
     }
 
-      // Search Page
+      
+ // =================== Search Page ====================
       public function search(Request $req){
         $query = $req->input('query');
         $data = Add_Prod::where('name','like','%'.$query.'%')->get();
@@ -91,14 +99,15 @@ class Product extends Controller
     }
 
 
-    //  Passing Data to views
+ // ===================  Passing Data to views ======================
     public function getAllData()
     {
         $data = Add_Prod::paginate(4);
         return view('index', ['prod' => $data]);
     }
 
-    //  Product detail 
+
+ // =================  Product detail ======================
     public function prod_detail($id)
     {
         $product = Add_Prod::find($id);
@@ -106,7 +115,7 @@ class Product extends Controller
     }
 
 
-    //  Saving Data to Cart
+    // ===============  Saving Data to Cart ==============
     public function cart($id)
     {
         if (session()->has('user')) {
@@ -121,7 +130,7 @@ class Product extends Controller
     }
 
 
-//  Getting Cart Itme Count 
+// ===================  Getting Cart Itme Count  =========================
      public static function CartItem()
     {
         $uid = session()->get('user')['user_id'];
@@ -130,7 +139,7 @@ class Product extends Controller
     }
 
 
-   //  Getting data from Cart
+   //  =====================Getting data from Cart ======================
 
     public function cartlist()
     {
@@ -148,14 +157,15 @@ class Product extends Controller
         }
     }
 
-    //  Romving data from cart
+    // =====================  Romving data from cart==================
     public function removecart($id)
     {
         Cart::destroy($id);
         return redirect('cartlist');
     }
 
-    // Order information
+  
+    // ===================== Order information ================
     public function orders()
     {
         if (session()->has('user')) {
@@ -185,12 +195,13 @@ class Product extends Controller
 
 
     
-//  Payment
+// ========================= Payment With Mail Functionality =======================
     public function Order_pay(Request $req)
-    {  if (session()->has('user')) {
+    { 
+         if (session()->has('user')) {
         $uid = session()->get('user')['user_id'];
         $all_prod = Cart::where('user_id', $uid)->get();
-
+        
         foreach ($all_prod as $prod) {     
             $order = new Orders();
             $order->user_id = $uid;
@@ -200,17 +211,28 @@ class Product extends Controller
             $order->pay_status = "Pending";
             $order->deliver_status = "Pending";
             $order->save();
-            Cart::where('user_id', $uid)->delete();
-        }
+            Cart::where('user_id', $uid)->delete();            
+        }  
+        $orders = Orders::where('user_id', $uid)->get();
+        $user = session('user');
+        $mailData =  [
+        'title'=> 'Mail From Attar Ecom ',
+        'user' => $user,
+        'all_prod' => $all_prod,
+        'order' => $orders
+    ];
+
+    Mail::to('md.iesa.personal@gmail.com')->send(new AttarEcom($mailData));  
         return redirect('/');
     }
     else {
         echo "<script> alert('Please Login and Add products to cart') </script>";
     }
     }
+    
+   
 
-
-    // Ordered details
+    //  =================== Ordered details =========================
     public function order_summary()
     {
         if (session()->has('user')) {
@@ -228,6 +250,7 @@ class Product extends Controller
 
 
   
+     //  ===========  Admin Page ============================
     public function admin(){
         if(  session('admin') == 1){
         $users = LoginUser_::paginate(10);

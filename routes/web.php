@@ -63,8 +63,6 @@ Route::post('/forget_pass',[Controller::class,'forget_pass_verify_user'])->name(
 Route::post('/update_user_password/{user_id}',[Controller::class,'update_user_password'])->name('update_user_password');
 
 
-
-
 // Adding Products
 Route::get('/add-prod',[Product::class,'ProdView'])->name('ProdView');
 Route::post('/add-prod',[Product::class,'AddProd'])->name('AddProd');
@@ -95,3 +93,10 @@ Route::get('order_summary',[Product::class,'order_summary'])->name('order_summar
 
 
 Route::get('search',[Product::class,'search'])->name('search');
+
+
+//  just teesting Mail Sender
+// Route::get('sendmail',[Controller::class,'SendMail']);
+
+
+Route::view('sendmail','email');

@@ -71,8 +71,8 @@ if (session()->has('user')){
                     <ul class="dropdown-menu ">
                     <li><a class="dropdown-item" href="{{ url('/')}}/login">Login</a></li>
                     <li><a class="dropdown-item" href="{{route('cartlist')}}">Cart</a></li>
-                    <li><a class="dropdown-item" href="{{url('orders')}}">Orders</a></li>
-                    <li><a class="dropdown-item" href="{{url('order_summary')}}">Ordered</a></li>
+                    <li><a class="dropdown-item" href="{{url('orders')}}">Buy Now</a></li>
+                    <li><a class="dropdown-item" href="{{url('order_summary')}}">Purchase History</a></li>
 
                 
                         @if (session()->has('user') && session('admin')==1)
